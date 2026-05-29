@@ -494,8 +494,8 @@ def get_vulnerability_from(
         and vuln_id in ignore_vulns
         and should_ignore
         and (
-            not ignore_vulns[vuln_id]["expires"]
-            or ignore_vulns[vuln_id]["expires"] > datetime.utcnow()
+            not ignore_vulns[vuln_id].get("expires")
+            or ignore_vulns[vuln_id].get("expires") > datetime.utcnow()
         )
     )
     more_info_url = f"{base_domain}{data.get('more_info_path', '')}"
